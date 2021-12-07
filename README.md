@@ -19,14 +19,14 @@ audio | installs pipewire
 aur | creates user aur_ builder and installs yay
 bspwm | installs bspwm and its configuration files
 dunst | installs dunst and its configuration files
-flameshot | installs flameshot and its configuration files
+flameshot | installs flameshot, its configuration files and creates a Screenshot folder
 fonts | installs noto fonts, font awesome and iosevka
 kitty | installs kitty and its configuration files
 miscs | (WIP) setups xdg-user-dirs
 neofetch | installs neofetch and, adds custom ascii art and configuration file and places an alias in .bashrc 
 picom | installs picom and its configuration file
 polybar | installs polybar-git from the aur
-pywal | installs pywal and creates .Xresources
+pywal | installs pywal, creates .Xresources and a wallpaper folder
 rofi | installs rofi and its configuration files
 sxhkd | installs sxhkd and its configuration files
 xorg | installs xorg and amdgpu driver, it also setups xinit on tty login
