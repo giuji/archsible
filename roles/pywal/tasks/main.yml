@@ -14,9 +14,16 @@
 
 - name: .Xresources
   block:
+  - name: copy placeholder wallpaper
+    copy:
+      dest: /home/{{ username }}/
+      src: wall
+      mode: 0755
+      group: "{{ username }}"
+      owner: "{{ username }}"
   - name: generate pywal update
     shell:
-      cmd: 'wal -i /home/{{ username }}/Immagini/wall'
+      cmd: 'wal -i /home/{{ username }}/wall'
   - name: link .Xresources
     file:
       state: link
