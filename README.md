@@ -22,7 +22,7 @@ dunst | installs dunst and its configuration files
 flameshot | installs flameshot and its configuration files
 fonts | installs noto fonts, font awesome and iosevka
 kitty | installs kitty and its configuration files
-miscs | setups xdg-user-dirs
+miscs | (WIP) setups xdg-user-dirs
 neofetch | installs neofetch and, adds custom ascii art and configuration file and places an alias in .bashrc 
 picom | installs picom and its configuration file
 polybar | installs polybar-git from the aur
@@ -38,5 +38,6 @@ xorg | installs xorg and amdgpu driver, it also setups xinit on tty login
 - [ ] Add a mpv role that installs and setups mpv
 - [ ] Add a packages role that installs all my favourite apps
 - [ ] Add a podman role that installs podman and setups a proxy vpn container
+- [ ] Add a neovim role that installs and configure neovim and its plugins
 
 
