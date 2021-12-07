@@ -1,6 +1,6 @@
 # archsible
 (almost) automated arch workstation setup via ansible.
-Probably the worst ansible playbook ever wrote pls don't use i'm still learning ok!?!?
+Probably the worst ansible playbook ever wrote pls don't judge my skills i'm still learning ok!?!?
 
 ![Screenshot](screenshot.png)
 
