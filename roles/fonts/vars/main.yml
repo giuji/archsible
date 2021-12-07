@@ -1,0 +1,11 @@
+---
+
+font_packages: 
+  - noto-fonts
+  - noto-fonts-cjk
+  - noto-fonts-emoji
+  - noto-fonts-extra
+
+font_packages_aur:
+  - ttf-font-awesome
+  - ttf-iosevka

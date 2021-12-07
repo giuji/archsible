@@ -1,0 +1,21 @@
+---
+
+- name: install flameshot
+  become: yes
+  pacman:
+    name: flameshot
+    state: present
+
+- name: flameshot config
+  block:
+    - name: create dir
+      file:
+        path: /home/{{ username }}/.config/flameshot
+        state: directory
+    - name: template config
+      template:
+        dest: /home/{{ username }}/.config/flameshot/flameshot.ini
+        src: flameshot.ini.j2
+        mode: 0755
+        owner: "{{ username }}"
+        group: "{{ username }}"

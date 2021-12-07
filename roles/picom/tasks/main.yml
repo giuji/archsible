@@ -1,0 +1,15 @@
+---
+
+- name: install picom
+  become: yes
+  pacman:
+    name: picom
+    state: present
+
+- name: copy config 
+  copy:
+    src: picom.conf
+    dest: /home/{{ username }}/.config
+    mode: 0755
+    group: "{{ username }}"
+    owner: "{{ username }}"

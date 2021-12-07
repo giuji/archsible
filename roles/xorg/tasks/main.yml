@@ -1,0 +1,25 @@
+--- 
+
+- name: Install Xorg
+  become: yes
+  pacman:
+    name: "{{ xorg_packages }}"
+    state: present
+
+- name: setup xinit
+  block:
+    - name: setup .xinitrc
+      copy:
+        dest: "/home/{{ username }}"
+        group: "{{ username }}"
+        mode: 0755
+        owner: "{{ username }}"
+        src: .xinitrc
+    - name: setup .bash_profile
+      blockinfile:
+        path: "/home/{{ username }}/.bash_profile"
+        block: |
+          if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
+            exec startx
+          fi
+        state: present

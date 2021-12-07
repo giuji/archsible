@@ -1,0 +1,12 @@
+#!/bin/sh
+
+[ -f "$HOME/.cache/wal/colors.sh" ] && . "$HOME/.cache/wal/colors.sh"
+
+DUNST_FILE=/home/{{ username }}/.config/dunst/dunstrc
+
+# update dunst based on pywal colors.
+sed -i '/background = /s/.*/    background = "'$color0'"/' $DUNST_FILE
+sed -i '/foreground = /s/.*/    foreground = "'$color7'"/' $DUNST_FILE
+sed -i '/frame_color = /s/.*/    frame_color = "'$color1'"/' $DUNST_FILE
+
+dunst -config ~/.config/dunst/dunstrc > /dev/null 2>&1 &

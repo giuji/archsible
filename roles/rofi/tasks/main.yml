@@ -1,0 +1,21 @@
+---
+
+- name: install rofi
+  become: yes
+  pacman:
+    name: rofi
+    state: present
+
+- name: setup config
+  block:
+  - name: create rofi dir
+    file:
+      path: /home/{{ username }}/.config/rofi
+      state: directory
+  - name: template config
+    template:
+      dest: /home/{{ username }}/.config/rofi/config.rasi
+      src: config.rasi.j2
+      mode: 0755
+      owner: "{{ username }}"
+      group: "{{ username }}"

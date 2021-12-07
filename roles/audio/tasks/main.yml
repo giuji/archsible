@@ -1,0 +1,15 @@
+---
+
+- name: install audio packages
+  pacman:
+    name: "{{ audio_packages }}"
+    state: present
+  become: yes
+
+- name: audio packages from aur
+  kewlfft.aur.aur:
+    name: "{{ audio_packages_aur }}"
+    use: yay
+    state: present
+  become: yes
+  become_user: aur_builder

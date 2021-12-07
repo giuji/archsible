@@ -1,0 +1,28 @@
+---
+
+- name: install pywal
+  become: yes
+  pacman:
+    name: python-pywal feh
+    state: present
+
+- name: register variable for pywal update
+  shell: 
+    cmd: 'ls -al /home/{{ username }}/.Xresources'
+  register: xresources_exists
+  ignore_errors: true
+
+- name: .Xresources
+  block:
+  - name: generate pywal update
+    shell:
+      cmd: 'wal -i /home/{{ username }}/Immagini/wall'
+  - name: link .Xresources
+    file:
+      state: link
+      src: /home/{{ username }}/.cache/wal/colors.Xresources
+      path: /home/{{ username }}/.Xresources
+      owner: "{{ username }}"
+      group: "{{ username }}"
+      mode: 0755
+  when: xresources_exists is failed

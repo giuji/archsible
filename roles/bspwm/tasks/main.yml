@@ -1,0 +1,21 @@
+---
+
+- name: install bspwm
+  become: yes
+  pacman:
+    name: bspwm
+    state: present
+
+- name: setup config files
+  block:
+  - name: create bspwm config folder
+    file:
+      path: /home/{{ username }}/.config/bspwm
+      state: directory
+  - name: template in the config files
+    template:
+      dest: /home/{{ username }}/.config/bspwm/bspwmrc
+      src: bspwmrc.j2
+      mode: 0755
+      owner: "{{ username }}"
+      group: "{{ username }}"

@@ -1,0 +1,12 @@
+---
+
+audio_packages:
+  - pipewire
+  - pipewire-pulse
+  - pipewire-alsa
+  - pipewire-jack
+  - wireplumber
+  - playerctl
+
+audio_packages_aur:
+  - pulseaudio-control

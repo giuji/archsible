@@ -1,0 +1,85 @@
+---
+
+- hosts: all
+  gather_facts: yes
+  vars_files:
+    - group_vars/all/vars.yml
+  tasks:
+    - name: update packages 
+      become: yes
+      pacman:
+        update-cache: yes
+        upgrade: yes
+
+# essential
+- hosts: all
+  roles:
+
+    - role: aur
+      tags: 
+        - essential   
+
+    - role: audio
+      tags:
+        - essential
+
+    - role: fonts
+      tags:
+        - essential
+    
+    - role: misc
+      tags:
+        - misc
+
+
+# desktop
+    - role: neofetch
+      tags: 
+        - utilities
+
+
+    - role: xorg
+      tags: 
+        - desktop
+
+
+    - role: bspwm
+      tags:
+        - desktop
+
+    - role: sxhkd
+      tags:
+        - desktop
+
+    - role: pywal
+      tags: 
+        - desktop
+
+    - role: polybar
+      tags:
+        - desktop
+
+    - role: rofi
+      tags:
+        - desktop
+
+    - role: dunst
+      tags:
+        - desktop
+      
+    - role: picom
+      tags:
+        - desktop  
+
+#utilites
+    - role: neofetch
+      tags: 
+        - utilities
+
+    - role: kitty
+      tags:
+        - utilities
+
+    - role: flameshot
+      tags:
+        - utilities

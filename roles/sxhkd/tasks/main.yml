@@ -1,0 +1,15 @@
+---
+
+- name: install sxhkd
+  become: yes
+  pacman:
+    name: sxhkd
+    state: present
+
+- name: setup config files
+  copy:
+    dest: /home/{{ username }}/.config
+    src: sxhkd
+    mode: 0755
+    owner: "{{ username }}"
+    group: "{{ username }}"

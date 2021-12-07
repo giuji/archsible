@@ -1,0 +1,15 @@
+---
+
+- name: install kitty
+  become: yes
+  pacman:
+    name: kitty
+    state: present
+
+- name: copy config
+  copy:
+    dest: /home/{{ username }}/.config
+    src: kitty
+    mode: 0755
+    group: "{{ username }}"
+    owner: "{{ username }}"

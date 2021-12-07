@@ -1,0 +1,23 @@
+---
+
+- name: install dunst
+  become: yes
+  pacman:
+      name: dunst
+      state: present
+
+- name: copy config
+  copy:
+    src: dunst
+    dest: /home/{{ username }}/.config
+    mode: 0755
+    group: "{{ username }}"
+    owner: "{{ username }}"
+
+- name: template launch script
+  template:
+    dest: /home/{{ username }}/.config/dunst/launchdunst.sh
+    src: launchdunst.sh.j2
+    mode: 0755
+    group: "{{ username }}"
+    owner: "{{ username }}"

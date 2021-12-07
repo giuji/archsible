@@ -1,0 +1,19 @@
+---
+
+- name: install xdg-dirs
+  become: yes
+  pacman:
+    name: xdg-user-dirs
+    state: present
+
+- name: update xdg-dirs
+  shell:
+    cmd: 'LC_ALL=it_IT xdg-user-dirs-update --force'
+
+#- name: tweak .bashrc
+#  replace:
+#    path: /home/{{ username }}/.bashrc
+#    regexp: '^(PS1.*)$'
+# replace content seems to be invalid as ansible interpret \u as a backreference (at least that's what i think it happens) how do i fix this help lmfao
+#    replace: 'export PS1="{\[$(tput sgr0)\]\[\033[38;5;2m\]\u\[$(tput sgr0)\]@\[$(tput bold)\]\h\[$(tput sgr0)\] \W} \[$(tput sgr0)\]"'
+#    backup: no

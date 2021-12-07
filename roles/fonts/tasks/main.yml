@@ -1,0 +1,19 @@
+---
+
+- name: install fonts
+  become: yes
+  pacman:
+    name: "{{ font_packages }}"
+    state: present
+
+- name: install fonts form aur 
+  become: yes
+  become_user: aur_builder
+  kewlfft.aur.aur:
+    name: "{{ font_packages_aur }}"
+    use: yay
+    state: present
+
+- name: update font cache
+  shell:
+    cmd: 'fc-cache update'

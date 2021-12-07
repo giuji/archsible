@@ -1,0 +1,17 @@
+---
+
+- name: install polybar
+  become: yes
+  become_user: aur_builder
+  kewlfft.aur.aur:
+    name: polybar-git
+    use: yay
+    state: present
+
+- name: template in files
+  copy:
+    src: polybar
+    dest: /home/{{ username }}/.config 
+    mode: 0755
+    group: "{{ username }}"
+    owner: "{{ username }}"

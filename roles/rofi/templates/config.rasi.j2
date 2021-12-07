@@ -1,0 +1,82 @@
+configuration {
+	modi:				"drun";
+	font:				"Iosevka 12";
+	show-icons:         true;
+	icon-theme: 		"Papirus-Dark";
+	sidebar-mode: 		false;
+}
+
+@import "/home/{{ username }}/.cache/wal/colors-rofi-dark"
+
+window {
+	    border-radius:                  0px;
+	    border:				            5px;
+	    border-color:			        @urgent-background;
+	    width:			    	        50%;
+	    padding: 			            32px;
+}
+
+prompt {
+	    background-color:		        @background;
+	    enabled:			            true;
+	    padding:			            0.5% 32px 0% -0.5%;
+	    font:				            "Iosevka 12";
+}
+
+entry {
+    	placeholder:			        "Search";
+	    background-color:               @background;
+    	placeholder-color:              @urgent-background;
+    	expand:                         true;
+    	padding:                        0.15% 0% 0% 0%;
+}
+
+inputbar {
+	children:			[ prompt, entry ];
+    	background-color:               @background;
+    	expand:                         false;
+    	border-radius:                  6px;
+    	margin:                         0%;
+    	padding:                        10px;
+}
+
+listview {
+    	columns:                        4;
+    	lines:	                        3;
+    	cycle:                          false;
+    	dynamic:                        true;
+    	layout:                         vertical;
+}
+
+mainbox {
+    	children:                       [ inputbar, listview ];
+    	spacing:                       	2%;
+    	padding:                        2% 1% 2% 1%;
+}
+
+element {
+    	orientation:                    vertical;
+    	padding:                        2% 0% 2% 0%;
+}
+
+element-icon {
+    	size:                           48px;
+    	horizontal-align:	 	        0.5;
+}
+
+element-text {
+    	expand:                         true;
+    	horizontal-align:               0.5;
+    	vertical-align:                 0.5;
+    	margin:                         0.5% 0.5% -0.5% 0.5%;
+}
+
+element-text, element-icon {
+	    background-color:               inherit;
+	    text-color:			            inherit;
+}
+
+element selected {
+    	background-color:               @urgent-background;
+    	border-radius:                  2px;
+}
