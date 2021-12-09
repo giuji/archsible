@@ -1,6 +1,6 @@
 ---
 
-- name: install required packages
+- name: install packages
   become: yes
   pacman:
     name: "{{ virt_packages}}"
@@ -10,13 +10,15 @@
   become: yes
   block:
     - name: libvirt group
-      lineinfile:
-        insertafter: '^unix_sock_group = '
-        line: "libvirt"
-    - name: libvirt socker
-      lineinfile:
-        insertafter: '^unix_sock_rw_perms = '
-        line: "0770"
+      replace:
+        regexp: '^#(.*unix_sock_group.*)'
+        replace: '\1'
+        path: /etc/libvirt/libvirtd.conf
+    - name: libvirt socket
+      replace:
+        path: /etc/libvirt/libvirtd.conf
+        regexp: '^#(.*unix_sock_rw_perms.*)'
+        replace: '\1'
 
 - name: create libvirt group
   become: yes

@@ -3,7 +3,9 @@
 - name: install pywal
   become: yes
   pacman:
-    name: python-pywal feh
+    name:
+      - feh
+      - python-pywal
     state: present
 
 - name: register variable for pywal update
