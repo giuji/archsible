@@ -5,3 +5,4 @@ virt_packages:
   - bridge-utils
   - openbsd-netcat
   - iptables-nft
+  - virt-manager

@@ -14,8 +14,12 @@
       owner: "{{ username }}"
       src: neofetch
 
+
+
   - name: Create alias
     lineinfile:
       path: /home/{{ username }}/.bashrc
       line: 'alias neofetch="neofetch --ascii /home/{{ username }}/.config/neofetch/bruh.asc"'
       state: present
+
+
