@@ -83,3 +83,7 @@
     - role: flameshot
       tags:
         - utilities
+
+    - role: virt
+      tags:
+        - utilities

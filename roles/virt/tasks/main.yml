@@ -1,0 +1,44 @@
+---
+
+- name: install required packages
+  become: yes
+  pacman:
+    name: "{{ virt_packages}}"
+    state: present
+
+- name: libvirt config
+  become: yes
+  block:
+    - name: libvirt group
+      lineinfile:
+        insertafter: '^unix_sock_group = '
+        line: "libvirt"
+    - name: libvirt socker
+      lineinfile:
+        insertafter: '^unix_sock_rw_perms = '
+        line: "0770"
+
+- name: create libvirt group
+  become: yes
+  group:
+    name: libvirt
+    state: present
+
+- name: libvirt group
+  become: yes
+  user:
+    name: "{{ username}}"
+    groups:
+      - libvirt
+    state: present
+    append: yes
+
+- name: enable libvirt daemon
+  become: yes
+  systemd:
+    name: "{{ item }}"
+    enabled: yes
+    state: started
+  loop:
+    - libvirtd.service
+    - virtlogd.service

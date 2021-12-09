@@ -1,0 +1,7 @@
+virt_packages:
+  - qemu
+  - libvirt
+  - iptables-nft 
+  - dnsmasq
+  - bridge-utils
+  - openbsd-netcat
