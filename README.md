@@ -30,6 +30,7 @@ pywal | installs pywal, creates .Xresources and a wallpaper folder
 rofi | installs rofi and its configuration files
 sxhkd | installs sxhkd and its configuration files
 xorg | installs xorg and amdgpu driver, it also setups xinit on tty login
+virt | installs virt-manager (WIP you need to install iptables-nft manually)
 ## TO-DO
 - [ ] Add a librewolf role that installs browser, its pywal theme and imports my librewolf profile
 - [x] Add a virtualization role that configures and install virt-manager
