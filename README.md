@@ -22,7 +22,6 @@ dunst | installs dunst and its configuration files
 flameshot | installs flameshot, its configuration files and creates a Screenshot folder
 fonts | installs noto fonts, font awesome and iosevka
 kitty | installs kitty and its configuration files
-miscs | (WIP) setups xdg-user-dirs
 neofetch | installs neofetch and, adds custom ascii art and configuration file and places an alias in .bashrc 
 picom | installs picom and its configuration file
 polybar | installs polybar-git from the aur

@@ -26,11 +26,6 @@
     - role: fonts
       tags:
         - essential
-    
-    - role: misc
-      tags:
-        - misc
-
 
 # desktop
     - role: neofetch
