@@ -1,0 +1,30 @@
+---
+
+  - name: install neovim
+    become: yes
+    pacman:
+      name: neovim
+      state: present
+
+  - name: install vim-plug
+    block:
+      - name: ensure autolad folder is present
+        file:
+          path: /home/{{ username }}/.local/share/nvim/site/autoload
+          state: directory
+          owner: "{{ username }}"
+          group: "{{ username }}"
+      - name: download vim-plug
+        get_url:
+          dest: /home/{{ username }}/.local/share/nvim/site/autoload/plug.vim
+          url: https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+          owner: "{{ username }}"
+          group: "{{ username }}"
+
+  - name: copy config
+    copy:
+      dest: /home/{{ username }}/.config
+      src: nvim
+      mode: 0755
+      owner: "{{ username }}"
+      group: "{{ username }}"
