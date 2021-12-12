@@ -1,6 +1,7 @@
 #! /bin/bash
 
 killall -q sxhkd
+killall -q fcitx
 killall -q picom
 killall -q polybar
 killall -q dunst
@@ -36,3 +37,4 @@ sxhkd &
 flameshot &
 playerctld daemon &
 bash /home/{{ username }}/.config/dunst/launchdunst.sh &
+fcitx -d &

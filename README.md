@@ -29,12 +29,14 @@ pywal | installs pywal, creates .Xresources and a wallpaper folder
 rofi | installs rofi and its configuration files
 sxhkd | installs sxhkd and its configuration files
 xorg | installs xorg and amdgpu driver, it also setups xinit on tty login
-virt | installs virt-manager (WIP you need to install iptables-nft manually)
+virt | installs virt-manager (**WIP** you need to install iptables-nft manually)
 gtk | installs gtk, icon and cursor theme and applies them
+mpv | installs mpv and its configurations files
+jp | installs fcitx and mozc (**WIP** you need to config mozc manually)
 ## TO-DO
 - [ ] Add a librewolf role that installs browser, its pywal theme and imports my librewolf profile
 - [x] Add a virtualization role that configures and install virt-manager
-- [ ] Add a keyboard role that installs japanese keyboard layout
+- [x] Add a keyboard role that installs japanese keyboard layout
 - [x] ~~Add a gtk role that sets breeze-dark as default gtk theme~~
 - [x] ~~Add a mpv role that installs and setups mpv~~
 - [ ] Add a packages role that installs all my favourite apps

@@ -1,0 +1,27 @@
+---
+
+- name: generate japanese local
+  become: yes
+  locale_gen:
+    name: ja_JP.UTF-8
+    state: present
+
+- name: add im variables
+  lineinfile:
+    path: /home/{{ username }}/.xinitrc
+    line: |
+      export GTK_IM_MODULE=fcitx
+      export QT_IM_MODULE=fcitx
+      export XMODIFIERS=@im=fcitx
+    insertbefore: BOF
+    state: present
+
+- name: install packages
+  become: yes
+  pacman:
+    name:
+      - fcitx-im
+      - fcitx-configtool
+      - fcitx-mozc
+      - adobe-source-han-sans-jp-fonts
+      - adobe-source-han-serif-jp-fonts
