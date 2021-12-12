@@ -7,6 +7,8 @@ audio_packages:
   - pipewire-jack
   - wireplumber
   - playerctl
+  - pavucontrol
+  - helvum
 
 audio_packages_aur:
   - pulseaudio-control

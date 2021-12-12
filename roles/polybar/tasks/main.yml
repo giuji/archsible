@@ -4,7 +4,7 @@
   become: yes
   become_user: aur_builder
   kewlfft.aur.aur:
-    name: polybar-git
+    name: polybar
     use: yay
     state: present
 

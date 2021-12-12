@@ -7,8 +7,9 @@
   tasks:
     - name: update packages 
       become: yes
-      pacman:
-        update-cache: yes
+      become_user: aur_builder
+      kewlfft.aur.aur:
+        update_cache: yes
         upgrade: yes
 
 # essential

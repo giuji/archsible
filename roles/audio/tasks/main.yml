@@ -13,3 +13,13 @@
     state: present
   become: yes
   become_user: aur_builder
+
+- name: ensure pipewire-pulse units are enabled
+  systemd:
+    scope: user
+    name: "{{ item }}"
+    enabled: yes
+  loop:
+    - pipewire-pulse.service
+    - pipewire-pulse.socket
+
