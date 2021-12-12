@@ -39,5 +39,5 @@ gtk | installs gtk, icon and cursor theme and applies them
 - [x] ~~Add a mpv role that installs and setups mpv~~
 - [ ] Add a packages role that installs all my favourite apps
 - [ ] Add a podman role that installs podman and setups a proxy vpn container
-- [ ] Add a neovim role that installs and configure neovim and its plugins
+- [x] ~~Add a neovim role that installs and configure neovim and its plugins~~
 - [ ] Add a role that setups default apps

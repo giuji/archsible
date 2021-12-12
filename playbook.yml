@@ -91,3 +91,7 @@
     - role: mpv
       tags:
         - utilities
+
+    - role: nvim
+      tags:
+        - utilities
