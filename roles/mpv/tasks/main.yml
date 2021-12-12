@@ -1,0 +1,15 @@
+---
+
+  - name: install mpv
+    become: yes
+    pacman:
+      name: mpv
+      state: present
+
+  - name: copy config files
+    copy:
+      dest: /home/{{ username }}/.config
+      src: mpv
+      mode: 0755
+      group: "{{ username }}"
+      owner: "{{ username }}"

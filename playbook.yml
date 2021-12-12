@@ -86,3 +86,7 @@
     - role: virt
       tags:
         - utilities
+
+    - role: mpv
+      tags:
+        - utilities

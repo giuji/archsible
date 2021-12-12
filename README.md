@@ -30,12 +30,14 @@ rofi | installs rofi and its configuration files
 sxhkd | installs sxhkd and its configuration files
 xorg | installs xorg and amdgpu driver, it also setups xinit on tty login
 virt | installs virt-manager (WIP you need to install iptables-nft manually)
+gtk | installs gtk, icon and cursor theme and applies them
 ## TO-DO
 - [ ] Add a librewolf role that installs browser, its pywal theme and imports my librewolf profile
 - [x] Add a virtualization role that configures and install virt-manager
 - [ ] Add a keyboard role that installs japanese keyboard layout
-- [ ] Add a gtk role that sets breeze-dark as default gtk theme
-- [ ] Add a mpv role that installs and setups mpv
+- [x] ~~Add a gtk role that sets breeze-dark as default gtk theme~~
+- [x] ~~Add a mpv role that installs and setups mpv~~
 - [ ] Add a packages role that installs all my favourite apps
 - [ ] Add a podman role that installs podman and setups a proxy vpn container
 - [ ] Add a neovim role that installs and configure neovim and its plugins
+- [ ] Add a role that setups default apps
