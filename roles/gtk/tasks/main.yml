@@ -17,6 +17,13 @@
           mode: 0755
           owner: "{{ username }}"
           group: "{{ username }}"
+      - name: gtk2
+        copy:
+          src: .gtkrc-2.0
+          dest: /home/{{ username }}
+          mode: 0755
+          owner: "{{ username }}"
+          group: "{{ username }}"
       - name: cursor
         copy:
           src: default
@@ -24,3 +31,8 @@
           mode: 0755
           owner: "{{ username }}"
           group: "{{ username }}"
+      - name: cursor in xinit
+        lineinfile:
+          path: /home/{{ username }}/.xinitrc
+          line: 'xsetroot -cursor_name left_ptr'
+          state: present

@@ -43,3 +43,5 @@ jp | installs fcitx and mozc (**WIP** you need to config mozc manually)
 - [ ] Add a podman role that installs podman and setups a proxy vpn container
 - [x] ~~Add a neovim role that installs and configure neovim and its plugins~~
 - [ ] Add a role that setups default apps
+- [ ] Add role for auto usb mount
+- [ ] Add a powermanager/acpi/screenlocker

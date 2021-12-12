@@ -9,6 +9,7 @@
       become: yes
       become_user: aur_builder
       kewlfft.aur.aur:
+        use: yay
         update_cache: yes
         upgrade: yes
 
@@ -98,4 +99,8 @@
 
     - role: jp
       tags:
+        - utilities
+
+    - role: apps
+      tags: 
         - utilities
