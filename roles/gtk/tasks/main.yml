@@ -1,0 +1,26 @@
+---
+
+  - name: install gtk, icon and cursor theme
+    become: yes
+    pacman:
+      name:
+        - breeze-gtk
+        - papirus-icon-theme
+        - capitaine-cursors
+
+  - name: apply themes
+    block:
+      - name: gtk3
+        copy:
+          src: gtk-3.0
+          dest: /home/{{ username }}/.config
+          mode: 0755
+          owner: "{{ username }}"
+          group: "{{ username }}"
+      - name: cursor
+        copy:
+          src: default
+          dest: /home/{{ username }}/.icons
+          mode: 0755
+          owner: "{{ username }}"
+          group: "{{ username }}"

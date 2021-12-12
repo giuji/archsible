@@ -66,6 +66,10 @@
       tags:
         - desktop  
 
+    - role: gtk
+      tags:
+        - desktop
+
 #utilites
     - role: neofetch
       tags: 
