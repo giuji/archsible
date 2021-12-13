@@ -34,10 +34,18 @@
       - input
       - video
 
-- name: create xprofile
-  file:
-    path: /home/{{ username }}/.xprofile
-    state: touch
-    mode: 0755
-    group: "{{ username }}"
-    owner: "{{ username }}"
+- name: setup xprofile
+  block:
+    - name: create xprofile
+      file:
+        path: /home/{{ username }}/.xprofile
+        state: touch
+        mode: 0755
+        group: "{{ username }}"
+        owner: "{{ username }}"
+    - name: enable xprofile
+      lineinfile:
+        path: /home/{{ username }}/.xinitrc
+        line: '[ -f ~/.xprofile ] && . ~/.xprofile'
+        state: present
+        insertbefore: BOF

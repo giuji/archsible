@@ -75,6 +75,10 @@
       tags:
         - desktop
 
+    - role: power
+      tags:
+        - desktop
+
 #utilites
     - role: neofetch
       tags: 

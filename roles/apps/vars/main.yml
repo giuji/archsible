@@ -5,6 +5,7 @@ native_apps:
   - discord
   - pcmanfm
   - udiskie
+  - mate-calc
 
 aur_apps:
   - steam-fonts

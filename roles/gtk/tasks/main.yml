@@ -2,11 +2,17 @@
 
   - name: install gtk, icon and cursor theme
     become: yes
-    pacman:
+    become_user: aur_builder
+    kewlfft.aur.aur:
       name:
-        - breeze-gtk
+        - gnome-themes-extra
+        - gtk2
         - papirus-icon-theme
         - capitaine-cursors
+        - adwaita-qt
+        - qt5ct
+      state: present
+      use: yay
 
   - name: apply themes
     block:
@@ -28,6 +34,18 @@
         copy:
           src: default
           dest: /home/{{ username }}/.icons
+          mode: 0755
+          owner: "{{ username }}"
+          group: "{{ username }}"
+      - name: enable qt5ct
+        lineinfile:
+          path: /home/{{ username }}/.xprofile
+          line: 'export QT_QPA_PLATFORMTHEME=qt5ct'
+          state: present
+      - name: copy qt5ct config
+        copy:
+          src: qt5ct
+          dest: /home/{{ username }}/.config
           mode: 0755
           owner: "{{ username }}"
           group: "{{ username }}"

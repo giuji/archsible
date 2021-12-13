@@ -16,7 +16,7 @@ the playbook assumes a fresh arch installation with a sudo capable login user
 role | description
 --- | ---  
 audio | installs pipewire
-aur | creates user aur_ builder and installs yay
+aur | creates user aur_builder and installs yay
 bspwm | installs bspwm and its configuration files
 dunst | installs dunst and its configuration files
 flameshot | installs flameshot, its configuration files and creates a Screenshot folder
@@ -30,7 +30,7 @@ rofi | installs rofi and its configuration files
 sxhkd | installs sxhkd and its configuration files
 xorg | installs xorg and amdgpu driver, it also setups xinit on tty login
 virt | installs virt-manager (**WIP** you need to install iptables-nft manually)
-gtk | installs gtk, icon and cursor theme and applies them
+gtk | installs gtk, qt5, icon and cursor theme and applies them
 mpv | installs mpv and its configurations files
 jp | installs fcitx and mozc (**WIP** you need to config mozc manually)
 zsh | sets zsh as default shell for user and copies my .zshrc
@@ -45,4 +45,4 @@ zsh | sets zsh as default shell for user and copies my .zshrc
 - [x] ~~Add a neovim role that installs and configure neovim and its plugins~~
 - [ ] Add a role that setups default apps
 - [x] ~~Add role for auto usb mount~~
-- [ ] Add a powermanager/acpi/screenlocker
+- [x] ~~Add a powermanager/acpi/screenlocker~~

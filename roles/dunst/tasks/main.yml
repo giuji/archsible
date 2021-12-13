@@ -33,6 +33,6 @@
     - name: kill
       lineinfile:
         path: /home/{{ username }}/.config/bspwm/bspwmrc
-        line: 'killall -q dunt'
+        line: 'killall -q dunst'
         insertafter: '^#(KILL)'
         state: present

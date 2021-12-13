@@ -19,3 +19,18 @@
         mode: 0755
         owner: "{{ username }}"
         group: "{{ username }}"
+
+- name: enable dunst
+  block:
+    - name: open
+      lineinfile:
+        path: /home/{{ username }}/.config/bspwm/bspwmrc
+        line: 'flameshot &'
+        insertafter: '^#(OPEN)'
+        state: present
+    - name: kill
+      lineinfile:
+        path: /home/{{ username }}/.config/bspwm/bspwmrc
+        line: 'killall -q flameshot'
+        insertafter: '^#(KILL)'
+        state: present
