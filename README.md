@@ -44,5 +44,5 @@ zsh | sets zsh as default shell for user and copies my .zshrc
 - [ ] Add a podman role that installs podman and setups a proxy vpn container
 - [x] ~~Add a neovim role that installs and configure neovim and its plugins~~
 - [ ] Add a role that setups default apps
-- [ ] Add role for auto usb mount
+- [x] ~~Add role for auto usb mount~~
 - [ ] Add a powermanager/acpi/screenlocker
