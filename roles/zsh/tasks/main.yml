@@ -1,0 +1,41 @@
+---
+
+  - name: install zsh 
+    become: yes
+    pacman:
+      name:
+        - zsh
+        - zsh-syntax-highlighting
+        - zsh-autosuggestions
+
+  - name: set zsh as default user shell
+    become: yes
+    user:
+      name: "{{ username }}"
+      append: yes
+      shell: /usr/bin/zsh
+      state: present
+
+  - name: copy zsh config
+    copy:
+      dest: /home/{{ username }}
+      src: .zshrc
+      mode: 0755
+      owner: "{{ username }}"
+      group: "{{ username}}"
+
+  - name: create zprofile
+    file:
+      path: /home/{{ username }}/.zprofile
+      state: touch
+      mode: 0755
+      group: "{{ username }}"
+      owner: "{{ username }}"
+
+  - name: create zsh history
+    file:
+      path: /home/{{ username }}/.cache/zshistory
+      state: touch
+      mode: 0755
+      group: "{{ username }}"
+      owner: "{{ username }}"

@@ -9,15 +9,15 @@
 - name: setup xinit
   block:
     - name: setup .xinitrc
-      copy:
-        dest: "/home/{{ username }}"
+      file:
+        path: "/home/{{ username }}"
         group: "{{ username }}"
         mode: 0755
         owner: "{{ username }}"
-        src: .xinitrc
-    - name: setup .bash_profile
+        state: touch
+    - name: setup .zprofile
       blockinfile:
-        path: "/home/{{ username }}/.bash_profile"
+        path: "/home/{{ username }}/.zprofile"
         block: |
           if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
             exec startx

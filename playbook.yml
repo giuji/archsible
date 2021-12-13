@@ -21,6 +21,9 @@
       tags: 
         - essential   
 
+    - role: zsh
+      tags: essential
+
     - role: audio
       tags:
         - essential

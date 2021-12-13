@@ -3,7 +3,7 @@
   - name: Install neofetch
     become: yes
     pacman:
-      name: "{{ neofetch_package }}"
+      name: neofetch
       state: present
 
   - name: Copy config files
@@ -18,7 +18,8 @@
 
   - name: Create alias
     lineinfile:
-      path: /home/{{ username }}/.bashrc
+      path: /home/{{ username }}/.zshrc
+      insertafter: '^#(Aliases)'
       line: 'alias neofetch="neofetch --ascii /home/{{ username }}/.config/neofetch/bruh.asc"'
       state: present
 

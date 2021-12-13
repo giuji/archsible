@@ -6,6 +6,12 @@
     name: bspwm
     state: present
 
+- name: xinit
+  lineinfile:
+    path: /home/{{ username }}/.xinitrc
+    line: 'exec bspwm'
+    state: present
+
 - name: setup config files
   block:
   - name: create bspwm config folder
