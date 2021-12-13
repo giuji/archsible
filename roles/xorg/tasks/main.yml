@@ -23,3 +23,21 @@
             exec startx
           fi
         state: present
+
+- name: xinput group
+  become: yes
+  user:
+    name: "{{ username }}"
+    state: present
+    append: yes
+    groups:
+      - input
+      - video
+
+- name: create xprofile
+  file:
+    path: /home/{{ username }}/.xprofile
+    state: touch
+    mode: 0755
+    group: "{{ username }}"
+    owner: "{{ username }}"

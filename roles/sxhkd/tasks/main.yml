@@ -13,3 +13,30 @@
     mode: 0755
     owner: "{{ username }}"
     group: "{{ username }}"
+
+- name: enable sxhkd
+  block:
+    - name: open
+      lineinfile:
+        path: /home/{{ username }}/.config/bspwm/bspwmrc
+        line: 'sxhkd &'
+        insertafter: '^#(OPEN)'
+        state: present
+    - name: kill
+      lineinfile:
+        path: /home/{{ username }}/.config/bspwm/bspwmrc
+        line: 'killall -q sxhkd'
+        insertafter: '^#(KILL)'
+        state: present
+    - name: open playerctl
+      lineinfile:
+        path: /home/{{ username }}/.config/bspwm/bspwmrc
+        line: 'playerctld deamon &'
+        insertafter: '^#(OPEN)'
+        state: present
+    - name: kill playerctl daemon
+      lineinfile:
+        path: /home/{{ username }}/.config/bspwm/bspwmrc
+        line: 'killall -q playerctld'
+        insertafter: '^#(KILL)'
+        state: present

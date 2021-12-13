@@ -7,13 +7,12 @@
     state: present
 
 - name: add im variables
-  lineinfile:
-    path: /home/{{ username }}/.xinitrc
-    line: |
+  blockinfile:
+    path: /home/{{ username }}/.xprofile
+    block: |
       export GTK_IM_MODULE=fcitx
       export QT_IM_MODULE=fcitx
       export XMODIFIERS=@im=fcitx
-    insertbefore: BOF
     state: present
 
 - name: install packages
@@ -25,3 +24,18 @@
       - fcitx-mozc
       - adobe-source-han-sans-jp-fonts
       - adobe-source-han-serif-jp-fonts
+
+- name: enable fcitx
+  block:
+    - name: open
+      lineinfile:
+        path: /home/{{ username }}/.config/bspwm/bspwmrc
+        line: 'fcitx -d &'
+        insertafter: '^#(OPEN)'
+        state: present
+    - name: kill
+      lineinfile:
+        path: /home/{{ username }}/.config/bspwm/bspwmrc
+        line: 'killall -q fcitx'
+        insertafter: '^#(KILL)'
+        state: present

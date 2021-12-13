@@ -1,11 +1,7 @@
 #! /bin/bash
 
-killall -q sxhkd
-killall -q fcitx
-killall -q picom
-killall -q polybar
-killall -q dunst
-killall -q playerctld
+#KILL
+
 xsetroot -cursor_name left_ptr
 setxkbmap it
 
@@ -25,18 +21,6 @@ bspc rule -a discord desktop="^4" state=pseudo_tiled
 bscp rule -a Spotify desktop="^3" state=pseudo_tiled focus=on
 bspc rule -a Steam deskotp="^5" focus=on
 
+#PYWALL
 
-wal -i /home/{{ username }}/wall/
-pywal-discord
-. "/home/{{ username }}/.cache/wal/colors.sh"
-bspc config normal_border_color "$color1"
-bspc config active_border_color "$color2"
-bspc config focused_border_color "$color15"
-
-polybar &
-picom &
-sxhkd &
-flameshot &
-playerctld daemon &
-bash /home/{{ username }}/.config/dunst/launchdunst.sh &
-fcitx -d &
+#OPEN

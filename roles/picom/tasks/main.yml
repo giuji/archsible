@@ -13,3 +13,18 @@
     mode: 0755
     group: "{{ username }}"
     owner: "{{ username }}"
+
+- name: enable compton in bspwmrc
+  block:
+    - name: kill
+      lineinfile:
+        path: /home/{{ username }}/.config/bspwm/bspwmrc
+        line: 'killall -q picom'
+        state: present
+        insertafter: '^#(KILL)'
+    - name: open
+      lineinfile:
+        path: /home/{{ username }}/.config/bspwm/bspwmrc
+        line: 'picom &'
+        state: present
+        insertafter: '^#(OPEN)'

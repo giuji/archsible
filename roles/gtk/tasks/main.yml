@@ -31,8 +31,3 @@
           mode: 0755
           owner: "{{ username }}"
           group: "{{ username }}"
-      - name: cursor in xinit
-        lineinfile:
-          path: /home/{{ username }}/.xinitrc
-          line: 'xsetroot -cursor_name left_ptr'
-          state: present

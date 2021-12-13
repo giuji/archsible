@@ -1,0 +1,38 @@
+---
+  
+  - name: apps from offical repos
+    become: yes
+    pacman:
+      name: "{{ native_apps }}"
+      state: present
+
+  - name: apps from the aur
+    become: yes
+    become_user: aur_builder
+    kewlfft.aur.aur:
+      name: "{{ aur_apps }}"
+      use: yay
+      state: present
+
+  - name: enable udiskie
+    block:
+      - name: bspwmrc
+        lineinfile:
+          path: /home/{{ username }}/.config/bspwm/bspwmrc
+          line: 'udiskie &'
+          insertafter: '^#(OPEN)'
+          state: present
+      - name: bspwmrc skull
+        lineinfile:
+          path: /home/{{ username }}/.config/bspwm/bspwmrc
+          line: 'killall -q udiskie'
+          insertafter: '^#(KILL)'
+          state: present
+
+  - name: storage group
+    become: yes
+    user:
+      name: "{{ username }}"
+      group: storage
+      append: yes
+      state: present

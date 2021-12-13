@@ -32,6 +32,7 @@
     name: "{{ username}}"
     groups:
       - libvirt
+      - kvm
     state: present
     append: yes
 
