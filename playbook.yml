@@ -111,3 +111,7 @@
     - role: apps
       tags: 
         - utilities
+
+    - role: librewolf
+      tags:
+        - utilities

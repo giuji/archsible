@@ -1,0 +1,48 @@
+---
+
+- name: install librewolf
+  become: yes
+  become_user: aur_builder
+  kewlfft.aur.aur:
+    name: librewolf-bin
+    state: present
+    use: yay
+
+- name: install pywalfox
+  block:
+    - name: install pip
+      become: yes
+      pip:
+        name: python-pip
+        state: present
+    - name: add .local/bin to path
+      lineinfile:
+        path: /home/{{ username }}/.zprofile
+        line: 'export PATH="$HOME/.local/bin:$PATH"'
+        state: present
+    - name: install pywalfox
+      pip:
+        name: pywalfox
+        state: present
+
+- name: register variable for pywalfox
+  shell:
+    cmd: 'ls -al /home/{{ username }}/.librewolf/native-messaging-hosts/'
+  register: pywalfox_exists
+  ignore_errors: true
+
+- name: enable pywalfox
+  block:
+    - name: activate pywalfox
+      shell:
+        cmd: '/home/{{ username }}/.local/bin/pywalfox install'
+    - name: create native-messagging folder 
+      file:
+        path: /home/{{ username }}/.librewolf/native-messaging-hosts
+        state: directory
+    - name: link pywalfox 
+      file:
+        path: /home/{{ username }}/.librewolf/native-messaging-hosts/pywalfox.json
+        state: link
+        src: /home/{{ username }}/.mozilla/native-messaging-hosts/pywalfox.json
+  when: pywalfox_exists is failed

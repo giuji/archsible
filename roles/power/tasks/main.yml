@@ -1,0 +1,42 @@
+---
+
+- name: install betterlockscreen
+  become: yes
+  become_user: aur_builder
+  kewlfft.aur.aur:
+    name: betterlockscreen
+    state: present
+    use: yay
+
+- name: create link for systemd unit
+  become: yes
+  file:
+    path: /usr/local/bin/betterlockscreen
+    state: hard
+    src: /usr/bin/betterlockscreen
+
+- name: enable systemd unit
+  become: yes
+  systemd:
+    name: betterlockscreen@{{ username }}.service
+    enabled: yes
+
+- name: autoreaload wallpaper
+  lineinfile:
+    path: /home/{{ username }}/.config/bspwm/bspwmrc
+    line: 'betterlockscreen -u /home/{{ username }}/wall &'
+    insertafter: '^#(PYWALL)'
+    state: present
+
+- name: install xfce power manager
+  become: yes
+  pacman:
+    name: xfce4-power-manager
+    state: present
+
+- name: enable powermanager
+  lineinfile:
+    path: /home/{{ username }}/.config/bspwm/bspwmrc
+    line: 'xfce4-power-manager --daemon &'
+    insertafter: '^#(OPEN)'
+    state: present

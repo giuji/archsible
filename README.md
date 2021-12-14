@@ -35,7 +35,7 @@ mpv | installs mpv and its configurations files
 jp | installs fcitx and mozc (**WIP** you need to config mozc manually)
 zsh | sets zsh as default shell for user and copies my .zshrc
 ## TO-DO
-- [ ] Add a librewolf role that installs browser, its pywal theme and imports my librewolf profile
+- [x] Add a librewolf role that installs browser, its pywal theme and imports my librewolf profile
 - [x] Add a virtualization role that configures and install virt-manager
 - [x] Add a keyboard role that installs japanese keyboard layout
 - [x] ~~Add a gtk role that sets breeze-dark as default gtk theme~~
