@@ -4,14 +4,6 @@
   gather_facts: yes
   vars_files:
     - group_vars/all/vars.yml
-  tasks:
-    - name: update packages 
-      become: yes
-      user:
-        name: "{{ username }}"
-        group: "{{ usarname}}"
-        append: no
-        state: present
 
 # essential
 - hosts: all
