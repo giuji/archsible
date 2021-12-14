@@ -35,11 +35,3 @@
           line: 'killall -q udiskie'
           insertafter: '^#(KILL)'
           state: present
-
-  - name: storage group
-    become: yes
-    user:
-      name: "{{ username }}"
-      group: storage
-      append: yes
-      state: present
