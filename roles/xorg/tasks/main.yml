@@ -10,7 +10,7 @@
   block:
     - name: setup .xinitrc
       file:
-        path: "/home/{{ username }}"
+        path: "/home/{{ username }}/.xinitrc"
         group: "{{ username }}"
         mode: 0755
         owner: "{{ username }}"

@@ -15,11 +15,6 @@
       pip:
         name: python-pip
         state: present
-    - name: add .local/bin to path
-      lineinfile:
-        path: /home/{{ username }}/.zprofile
-        line: 'export PATH="$HOME/.local/bin:$PATH"'
-        state: present
     - name: install pywalfox
       pip:
         name: pywalfox
@@ -46,3 +41,9 @@
         state: link
         src: /home/{{ username }}/.mozilla/native-messaging-hosts/pywalfox.json
   when: pywalfox_exists is failed
+
+- name: pywalfox in bspwmrc
+  lineinfile:
+    path: /home/{{ username }}/.config/bspwm/bspwmrc
+    line: '/home/{{ username }}/.local/bin/pywalfox update'
+    insertafter: '^#(OPEN)'

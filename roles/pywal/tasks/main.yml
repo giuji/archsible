@@ -41,7 +41,6 @@
     path: /home/{{ username }}/.config/bspwm/bspwmrc
     block: |
       wal -i /home/{{ username }}/wall/
-      pywal-discord
       . "/home/{{ username }}/.cache/wal/colors.sh"
       bspc config normal_border_color "$color1"
       bspc config active_border_color "$color2"

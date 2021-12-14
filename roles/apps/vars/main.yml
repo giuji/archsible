@@ -17,3 +17,4 @@ aur_apps:
   - betterdiscord-installer
   - anki-official-binary-bundle
   - ani-cli-git
+  - pywal-discord-git

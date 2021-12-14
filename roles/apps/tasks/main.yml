@@ -14,6 +14,13 @@
       use: yay
       state: present
 
+  - name: pywal-discord
+    lineinfile:
+      path: /home/{{ username }}/.config/bspwm/bspwmrc
+      line: 'pywal-discord update'
+      insertafter: '^#(OPEN)'
+
+
   - name: enable udiskie
     block:
       - name: bspwmrc
