@@ -19,6 +19,10 @@
         mode: 0755
         owner: "{{ username }}"
         group: "{{ username }}"
+    - name: create screenshot dir
+      file:
+        path: /home/{{ username }}/Screenshots
+        state: directory 
 
 - name: enable dunst
   block:

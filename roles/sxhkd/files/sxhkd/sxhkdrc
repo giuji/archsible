@@ -8,6 +8,13 @@ super + Return
 Print
     flameshot gui
 
+# pcmanfm
+super + p
+    pcmanfm
+
+#pywal
+
+
 # program launcher
 super + d
 	rofi -show drun -show-icons icon-theme "Papirus-Dark"
@@ -70,8 +77,8 @@ super + {y,u,i,o}
 	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
 
 # set the node flags
-super + ctrl + {m,x,y,z}
-	bspc node -g {marked,locked,sticky,private}
+#super + ctrl + {m,x,y,z}
+#	bspc node -g {marked,locked,sticky,private}
 
 ## focus/swap
 
@@ -88,13 +95,13 @@ super + {_,shift + }c
 	bspc node -f {next,prev}.local.!hidden.window
 
 # focus the next/previous desktop in the current monitor
-super + {Next,Prior}
+super + ctrl + Tab + {shift,_}
 	bspc desktop -f {prev,next}.local
 
-# focus the last node/desktop
-super + Tab
-	bspc desktop -f last
+super + Tab + {shift,_}
+	bspc desktop -f {prev,next}.local
 
+# focus on last node
 alt + Tab
     bspc node -f last
 

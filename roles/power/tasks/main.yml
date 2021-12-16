@@ -4,7 +4,9 @@
   become: yes
   become_user: aur_builder
   kewlfft.aur.aur:
-    name: betterlockscreen
+    name: 
+      - betterlockscreen
+      - xss-lock
     state: present
     use: yay
 
@@ -15,17 +17,26 @@
     state: hard
     src: /usr/bin/betterlockscreen
 
-- name: enable systemd unit
-  become: yes
-  systemd:
-    name: betterlockscreen@{{ username }}.service
-    enabled: yes
+- name: xss-lock
+  block:
+    - name: enable xss-lock
+      lineinfile:
+        path: /home/{{ username }}/.config/bspwm/bspwmrc
+        line: 'xss-lock -- betterlock -l &'
+        insertafter: '^#(OPEN)'
+        state: present
+    - name: xss-lock kill
+      lineinfile:
+        path: /home/{{ username }}/.config/bspwm/bspwmrc
+        line: 'killall -q xss-lock'
+        insertafter: '^#(KILL)'
+        state: present
 
 - name: autoreaload wallpaper
   lineinfile:
     path: /home/{{ username }}/.config/bspwm/bspwmrc
     line: 'betterlockscreen -u /home/{{ username }}/wall &'
-    insertafter: '^#(PYWALL)'
+    insertafter: '^#(OPEN)'
     state: present
 
 - name: install xfce power manager

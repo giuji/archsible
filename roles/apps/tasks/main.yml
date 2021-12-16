@@ -16,7 +16,7 @@
 
   - name: pywal-discord
     lineinfile:
-      path: /home/{{ username }}/.config/bspwm/bspwmrc
+      path: /home/{{ username }}/.config/bspwm/colors.sh
       line: 'pywal-discord update'
       insertafter: '^#(OPEN)'
 
@@ -35,3 +35,31 @@
           line: 'killall -q udiskie'
           insertafter: '^#(KILL)'
           state: present
+
+  - name: apps from flatpak
+    block:
+      - name: install flatpak
+        become: yes
+        pacman:
+          name: flatpak
+          state: present
+      - name: enable flathub
+        flatpak_remote:
+          name: flathub
+          state: present
+          method: user
+          flatpakrepo_url: https://flathub.org/repo/flathub.flatpakrepo
+      - name: install flatpak apps
+        flatpak:
+          name: "{{ flatpak_apps }}"
+          method: user
+          state: present
+          remote: flathub
+
+  - name: radeon-profile
+    become: yes
+    systemd:
+      name: radeon-profile-daemon.service
+      enabled: yes
+      state: started 
+      scope: system

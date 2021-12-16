@@ -3,13 +3,25 @@
   - name: install mpv
     become: yes
     pacman:
-      name: mpv
+      name: 
+      - ffmpeg
+      - libva-mesa-driver
+      - mesa-vdpau
+      - mpv
       state: present
 
   - name: copy config files
     copy:
       dest: /home/{{ username }}/.config
       src: mpv
+      mode: 0755
+      group: "{{ username }}"
+      owner: "{{ username }}"
+
+  - name: template config
+    template:
+      dest: /home/{{ username }}/.config/mpv.conf
+      src: mpv.conf.j2
       mode: 0755
       group: "{{ username }}"
       owner: "{{ username }}"

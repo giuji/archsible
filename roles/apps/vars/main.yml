@@ -6,6 +6,8 @@ native_apps:
   - pcmanfm
   - udiskie
   - mate-calc
+  - wget
+  - htop
 
 aur_apps:
   - steam-fonts
@@ -15,6 +17,17 @@ aur_apps:
   - spotify
   - spotifywm-git
   - betterdiscord-installer
-  - anki-official-binary-bundle
   - ani-cli-git
   - pywal-discord-git
+  - peazip-qt5-bin
+  - waifu2x-ncnn-vulkan
+  - radeon-profile-git
+  - radeon-profile-daemon-git
+  - radeontop
+
+flatpak_apps:
+  - net.ankiweb.Anki
+  - org.onlyoffice.desktopeditors
+  - com.tonikelope.MegaBasterd
+  - org.telegram.desktop
+  - com.github.tchx84.Flatseal

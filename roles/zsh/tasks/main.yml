@@ -13,7 +13,6 @@
     become: yes
     user:
       name: "{{ username }}"
-      append: yes
       shell: /usr/bin/zsh
       state: present
 

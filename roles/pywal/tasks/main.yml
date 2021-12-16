@@ -16,34 +16,61 @@
 
 - name: .Xresources
   block:
-  - name: copy placeholder wallpaper
-    copy:
-      dest: /home/{{ username }}/
-      src: wall
-      mode: 0755
-      group: "{{ username }}"
-      owner: "{{ username }}"
-  - name: generate pywal update
-    shell:
-      cmd: 'wal -i /home/{{ username }}/wall'
-  - name: link .Xresources
-    file:
-      state: link
-      src: /home/{{ username }}/.cache/wal/colors.Xresources
-      path: /home/{{ username }}/.Xresources
-      owner: "{{ username }}"
-      group: "{{ username }}"
-      mode: 0755
+    - name: copy placeholder wallpaper
+      copy:
+        dest: /home/{{ username }}/
+        src: wall
+        mode: 0755
+        group: "{{ username }}"
+        owner: "{{ username }}"
+    - name: generate pywal update
+      shell:
+        cmd: 'wal -i /home/{{ username }}/wall'
+    - name: link .Xresources
+      file:
+        state: link
+        src: /home/{{ username }}/.cache/wal/colors.Xresources
+        path: /home/{{ username }}/.Xresources
+        owner: "{{ username }}"
+        group: "{{ username }}"
+        mode: 0755
   when: xresources_exists is failed
 
-- name: enable pywal
-  blockinfile:
-    path: /home/{{ username }}/.config/bspwm/bspwmrc
-    block: |
-      wal -i /home/{{ username }}/wall/
-      . "/home/{{ username }}/.cache/wal/colors.sh"
-      bspc config normal_border_color "$color1"
-      bspc config active_border_color "$color2"
-      bspc config focused_border_color "$color15"
-    state: present
-    insertafter: '^#(PYWALL)'
+- name: colorsss
+  block:
+    - name: create file
+      file:
+        state: touch
+        path: /home/{{ username }}/.config/bspwm/colors.sh
+        mode: 0755
+        owner: "{{ username }}"
+        group: "{{ username }}"
+    - name: enable pywal
+      blockinfile:
+        path: /home/{{ username }}/.config/bspwm/colors.sh
+        block: |
+          #KILL
+          #PYWAL
+          wal -i /home/{{ username }}/wall/
+          . "/home/{{ username }}/.cache/wal/colors.sh"
+          bspc config normal_border_color "$color1"
+          bspc config active_border_color "$color2"
+          bspc config focused_border_color "$color15"
+          #OPEN
+          exit
+        state: present
+        insertafter: '^#(PYWALL)'
+    - name: enable in bspwm
+      lineinfile:
+        path: /home/{{ username }}/.config/bspwm/bspwmrc
+        insertafter: '^#(OPEN)'
+        line: 'bash /home/{{ username }}/.config/bspwm/colors.sh &'
+        state: present
+    - name: enable in sxhkd
+      blockinfile:
+        path: /home/{{ username }}/.config/sxhkd/sxhkdrc
+        block: |
+          super + a
+              bash /home/{{ username }}/.config/bspwm/colors.sh
+        insertafter: '^#(pywal)'
+        state: present
